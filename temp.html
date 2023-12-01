@@ -1,0 +1,32 @@
+<form action="{{url_for('add_request')}}" method="POST">
+  <h4>ENTER YOUR DETAILS</h4><br><br>
+  <label for="uname">Employer name :</label>
+  <input type="text" placeholder='enter employer name' name="ename" required><br>
+  <label for="uname">Type of job :</label>
+  <select name="tj" id="job">
+    <option value="1">Manual Labour</option>
+    <option value="2">Gardener</option>
+    <option value="3">House Keeper</option>
+    <option value="4">Painter</option>
+  </select><br>
+  <label for="uname">District :</label>
+  <select name="dist" id="dis" style="width: 100%;padding:8px;border-radius:5px;background-color: transparent;">
+    <option value="1">Chennai</option>
+    <option value="2">Coimbatore</option>
+    <option value="3">Ooty</option>
+    <option value="4">Pondicherry</option>
+    <option value="5">Kanyakumari</option>
+    <option value="6">Erode</option>
+  </select><br>
+  <label for="uname">Locality :</label><br>
+  <input type="text" placeholder='ex : saravanampatti' name="locality" required><br>
+  <label for="uname">Pincode :</label><br>
+  <input type="text" placeholder='ex XXXXXX' name="pincode" required><br><br><br>
+  <label for="uname">Contact :</label><br>
+  <input type="text" placeholder='ex : +91 XXXXX XXXXX' name="contact" required><br>
+  <label for="uname">Workers required :</label><br>
+  <input type="text" placeholder='ex : 5' name="workreq" required><br>
+  <label for="pwd">Wage(per person/per day) :</label><br>
+  <input type="text" placeholder='ex : 900' name="wage"><br><br>
+  <button>Make Request</button><br><br>
+</form>
