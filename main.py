@@ -1,4 +1,4 @@
-from flask import *
+from flask import render_template,request,Flask,redirect,url_for
 from flask_mysqldb import MySQL
 from templates import *
 
@@ -47,7 +47,7 @@ def add_request(name):
         con.execute(query,(wage,ename,tj,dist,locality,pincode,contact,workreq))
         con.connection.commit()
         con.close()
-        flash("request added!")
+
         return redirect(url_for('truehome'))
   
     return render_template("add_request.html")
@@ -88,7 +88,7 @@ def signup():
         con.execute(query,(uname,email,password))
         con.connection.commit()
         con.close()
-        flash('new user created!')
+
         return redirect(url_for('add_worker'))
     return render_template('signup.html')
 
