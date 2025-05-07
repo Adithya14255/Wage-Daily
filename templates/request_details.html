@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}WageDaily - Job Details{% endblock %}
+
+{% block extra_css %}
+<style>
+  .job-details {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .wage {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    color: #01bb0a;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .job-detail {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+  }
+  
+  .job-detail strong {
+    width: 180px;
+    display: inline-block;
+  }
+  
+  .actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .back-btn {
+    background-color: transparent;
+    border: 1px solid #ccc;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+  <h2 class="title">Job Request Details</h2>
+  
+  <div class="job-details">
+    <div class="wage">₹{{ job_request.wage }} <small>per day</small></div>
+    
+    <div class="job-detail">
+      <strong>Employer:</strong> <span>{{ job_request.employer_name }}</span>
+    </div>
+    
+    <div class="job-detail">
+      <strong>Job Type:</strong> <span>{{ job_request.job_type }}</span>
+    </div>
+    
+    <div class="job-detail">
+      <strong>District:</strong> <span>{{ job_request.district }}</span>
+    </div>
+    
+    <div class="job-detail">
+      <strong>Locality:</strong> <span>{{ job_request.locality }}</span>
+    </div>
+    
+    <div class="job-detail">
+      <strong>Pincode:</strong> <span>{{ job_request.pincode }}</span>
+    </div>
+    
+    <div class="job-detail">
+      <strong>Contact:</strong> <span>{{ job_request.contact }}</span>
+    </div>
+    
+    <div class="job-detail">
+      <strong>Workers Required:</strong> <span>{{ job_request.workers_required }}</span>
+    </div>
+    
+    <div class="actions">
+      <a href="{{ url_for('dashboard') }}" class="button back-btn">Back to Dashboard</a>
+      <a href="{{ url_for('confirm_booking', request_id=job_request.id) }}" class="button">Book This Job</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

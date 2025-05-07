@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}WageDaily - Dashboard{% endblock %}
+
+{% block extra_css %}
+<style>
+  .job-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .job-card {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    border-radius: 15px;
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  }
+  
+  .wage {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #01bb0a;
+    font-weight: bold;
+  }
+  
+  .job-detail {
+    margin-bottom: 10px;
+    display: flex;
+  }
+  
+  .job-detail strong {
+    width: 140px;
+    display: inline-block;
+  }
+  
+  .actions {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .no-jobs {
+    text-align: center;
+    padding: 40px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+  <h2 class="title">Welcome, {{ username }}!</h2>
+  
+  <div style="text-align: center; margin: 20px 0;">
+    <a href="{{ url_for('add_request') }}" class="button">Create New Job Request</a>
+  </div>
+  
+  <h3 style="margin-top: 40px; text-align: center; font-size: 1.8rem;">Available Job Requests</h3>
+  
+  {% if job_requests %}
+    <div class="job-grid">
+      {% for job in job_requests %}
+      <div class="job-card">
+        <div class="wage">₹{{ job.wage }} <small>per day</small></div>
+        
+        <div class="job-detail">
+          <strong>Employer:</strong> <span>{{ job.employer_name }}</span>
+        </div>
+        
+        <div class="job-detail">
+          <strong>Job Type:</strong> <span>{{ job.job_type }}</span>
+        </div>
+        
+        <div class="job-detail">
+          <strong>Location:</strong> <span>{{ job.locality }}, {{ job.district }}</span>
+        </div>
+        
+        <div class="job-detail">
+          <strong>Workers Needed:</strong> <span>{{ job.workers_required }}</span>
+        </div>
+        
+        <div class="actions">
+          <a href="{{ url_for('request_details', request_id=job.id) }}" class="button">View Details</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="no-jobs">
+      <p>No job requests available at the moment.</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

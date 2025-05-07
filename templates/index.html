@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}WageDaily - Connect Workers and Employers{% endblock %}
+
+{% block extra_css %}
+<style>
+  .hero {
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 20px;
+  }
+
+  .video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    filter: brightness(0.7);
+  }
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 60px 0;
+  }
+
+  .feature-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .feature-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #01bb0a;
+  }
+
+  .feature-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .feature-description {
+    line-height: 1.6;
+    color: #ddd;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<video autoplay muted loop class="video-background">
+  <source src="{{ url_for('static', filename='vid.mp4') }}" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+<div class="hero">
+  <h1>Connect Workers and Employers</h1>
+  <p>WageDaily is a platform designed to empower daily wage workers by connecting them directly with employers, eliminating middlemen and ensuring fair wages for honest work.</p>
+  <div class="hero-buttons">
+    <a href="{{ url_for('signup') }}" class="button">Get Started</a>
+    <a href="{{ url_for('about') }}" class="button">Learn More</a>
+  </div>
+</div>
+
+<div class="features">
+  <div class="feature-card">
+    <div class="feature-icon">
+      <i class="fas fa-handshake"></i>
+    </div>
+    <h3 class="feature-title">Direct Connection</h3>
+    <p class="feature-description">Connect directly with workers or employers without any intermediaries, ensuring transparency and fair practices.</p>
+  </div>
+  
+  <div class="feature-card">
+    <div class="feature-icon">
+      <i class="fas fa-money-bill-wave"></i>
+    </div>
+    <h3 class="feature-title">Fair Wages</h3>
+    <p class="feature-description">Workers receive fair compensation for their skills and time, while employers get quality service at reasonable rates.</p>
+  </div>
+  
+  <div class="feature-card">
+    <div class="feature-icon">
+      <i class="fas fa-map-marker-alt"></i>
+    </div>
+    <h3 class="feature-title">Local Opportunities</h3>
+    <p class="feature-description">Find work opportunities or workers in your local area, reducing travel time and costs for everyone involved.</p>
+  </div>
+</div>
+{% endblock %}
