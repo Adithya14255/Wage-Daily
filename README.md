@@ -1,7 +1,7 @@
 # WageDaily
 
 WageDaily is a web platform that connects employers with daily wage workers, facilitating job postings and bookings in a streamlined manner.
-![](static/img2)
+![](static/img2.png)
 ## Overview
 
 WageDaily aims to solve the problem of connecting daily wage workers with potential employers. The platform allows employers to post job requests with details such as job type, location, wage, and number of workers required. Workers can then browse these opportunities and book jobs that match their skills and preferences.
